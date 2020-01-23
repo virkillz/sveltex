@@ -6,11 +6,6 @@ defmodule Sveltex do
   @doc """
   Main function to turn markup into html component which later on being parsed by the javascript side.
 
-  ## Examples
-
-      iex> Sveltex.hello()
-      :world
-
   """
   def sveltex(name, props) do
     Phoenix.HTML.Tag.tag(:div,

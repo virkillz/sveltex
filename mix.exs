@@ -4,10 +4,27 @@ defmodule Sveltex.MixProject do
   def project do
     [
       app: :sveltex,
-      version: "0.1.0",
+      version: "0.1.1",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
+      description: description(),
+      package: package(),
       deps: deps()
+    ]
+  end
+
+  defp description do
+    """
+    Embed Svelte component easily into Phoenix App.
+    """
+  end
+
+  defp package do
+    [
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
+      maintainers: ["virkillz"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/virkillz/sveltex"}
     ]
   end
 
@@ -22,9 +39,8 @@ defmodule Sveltex.MixProject do
   defp deps do
     [
       {:phoenix_html, "~> 2.13"},
-      {:jason, "~> 1.1"}
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"},
+      {:jason, "~> 1.1"},
+      {:ex_doc, "~> 0.18", only: :dev}
     ]
   end
 end
