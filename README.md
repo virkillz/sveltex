@@ -1,23 +1,30 @@
 # Sveltex
 
-**TODO: Add description**
+Building web using Phoenix is fun.
+Creating component using Svelte is fun.
+
+Imagine we can just create svelte component, save it as `wizard.svelte` inside our `/assets/js/svelte` and anytime we need it inside out layout, just call it like so:
+
+<%= sveltex "name_of_component", %{props_as_map: ""} %>
+
+Sveltex does exactly this.
 
 ## Installation
 
 This library works well with Phoenix 1.4.12
-The difference between previous 1.4. version is replacing uglify with terser library.
+The difference between previous 1.4. version is replacing `uglify` with `terser`.
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `sveltex` to your list of dependencies in `mix.exs`:
 
-1. install Sveltex
+1. Install `Sveltex`
 
 Add the dependency into your `mix.exs`
 
 ```elixir
     def deps do
       [
-        {:sveltex, git: "https://github.com/virkillz/sveltex.git", tag: "0.1.0"}
+        {:sveltex, git: "https://github.com/virkillz/sveltex.git", tag: "0.1.1"}
       ]
     end`
 
@@ -25,9 +32,9 @@ Add the dependency into your `mix.exs`
 
 then run `mix deps.get`
 
-2. install Svelte in your node dependency (from your `/assets`)
+2. Install Svelte and Svelte loader in your node dependency
 
-`npm install svelte svelte-loader --save`
+`cd assets && npm install svelte svelte-loader --save`
 
 4. Configure your webpack.
 
@@ -47,7 +54,7 @@ Add resolve:
   },
 ```
 
-Add 2 new rules under `module`
+Add 2 new rules under `module rules`
 
 ```
 
@@ -75,11 +82,11 @@ Add 2 new rules under `module`
 
 ```
 
-5. Add this into your `/assets/js/app.js` file.
+5. Add this into your `app.js` (`/assets/js/app.js` file).
 
 `import "../../deps/sveltex/sveltex.js";`
 
-6. Go to `lib/your_project_name_web.ex` and add this line right before `end` in `view` function.
+6. Go to `lib/[your_project_name]_web.ex` and add this line below `use Phoenix.HTML` in `view` function.
 
 ```
 import Sveltex
