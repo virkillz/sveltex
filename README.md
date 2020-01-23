@@ -46,7 +46,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
      resolve: {
        alias: {
-         svelte: path.resolve(‘node_modules’, ‘svelte’)
+         svelte: path.resolve('node_modules', 'svelte')
        },
        extensions: ['.mjs', '.js', '.svelte'],
        mainFields: ['svelte', 'browser', 'module', 'main'],
@@ -85,7 +85,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
 5. Add this into your `app.js` (`/assets/js/app.js` file).
 
-   `import "../../deps/sveltex/sveltex.js";`
+   `import "../../deps/sveltex/assets/sveltex.js";`
 
 6. Go to `lib/[your_project_name]_web.ex` and add this line below `use Phoenix.HTML` in `view` function.
 
@@ -95,23 +95,23 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
 ## How to use
 
-    Put your `.svelte` files under `/assets/js/svelte`.
+Put your `.svelte` files under `/assets/js/svelte`.
 
-    for example: `test.svelte`
+for example: `test.svelte`
 
-    ```html
-    <script>
-        export let name;
-    </script>
+```html
+<script>
+  export let name;
+</script>
 
-    <h1>Hey {name}, Phoenix and Svelte setup is working!</h1>
-    ```
+<h1>Hey {name}, Phoenix and Svelte setup is working!</h1>
+```
 
-    Then anywhere in your view template you can use
+Then anywhere in your view template you can use
 
-    ```elixir
-    <%= sveltex "test", %{name: "virkillz"}>
-    ```
+```elixir
+<%= sveltex "test", %{name: "virkillz"}>
+```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
