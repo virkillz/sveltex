@@ -40,7 +40,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
    Add resolve:
 
-   ```
+   ```javascript
 
      module.exports = (env, options) => ({
 
@@ -56,7 +56,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
    Add 2 new rules under `module rules`
 
-   ```
+   ```javascript
 
        module: {
          rules: [
@@ -89,7 +89,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
 6. Go to `lib/[your_project_name]_web.ex` and add this line below `use Phoenix.HTML` in `view` function.
 
-   ```
+   ```elixir
    import Sveltex
    ```
 
@@ -99,7 +99,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
     for example: `test.svelte`
 
-    ```
+    ```html
     <script>
         export let name;
     </script>
@@ -108,7 +108,10 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
     ```
 
     Then anywhere in your view template you can use
-    `<%= sveltex "test", %{name: "virkillz"}>`
+
+    ```elixir
+    <%= sveltex "test", %{name: "virkillz"}>
+    ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
