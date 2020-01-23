@@ -27,78 +27,49 @@ then run `mix deps.get`
 
 2. install Svelte in your node dependency (from your `/assets`)
 
-`npm install svelte@^3.17.0`
-
-3. install svelte and svelte-loader for your webpack.
-
-`npm install svelte-loader@^2.13.0`
+`npm install svelte svelte-loader --save`
 
 4. Configure your webpack.
 
+Add resolve:
+
 ```
-  const path = require(‘path’);
-  const glob = require(‘glob’);
-  const MiniCssExtractPlugin = require(‘mini-css-extract-plugin’);
-  const TerserPlugin = require(‘terser-webpack-plugin’);
-  const OptimizeCSSAssetsPlugin = require(‘optimize-css-assets-webpack-plugin’);
-  const CopyWebpackPlugin = require(‘copy-webpack-plugin’);
 
   module.exports = (env, options) => ({
-    optimization: {
-      minimizer: [
-        new TerserPlugin({ cache: true, parallel: true, sourceMap: false }),
-        new OptimizeCSSAssetsPlugin({})
-      ]
+
+  resolve: {
+    alias: {
+      svelte: path.resolve(‘node_modules’, ‘svelte’)
     },
-    entry: {
-      ‘./js/app.js’: glob.sync(‘./vendor/**/*.js’).concat([‘./js/app.js’])
-    },
-    resolve: {
-      alias: {
-        svelte: path.resolve(‘node_modules’, ‘svelte’)
-      },
-      extensions: [‘.mjs’, ‘.js’, ‘.svelte’],
-      mainFields: [‘svelte’, ‘browser’, ‘module’, ‘main’],
-      modules: [‘node_modules’]
-    },
-    output: {
-      filename: ‘app.js’,
-      path: path.resolve(__dirname, ‘../priv/static/js’)
-    },
+    extensions: ['.mjs', '.js', '.svelte'],
+    mainFields: ['svelte', 'browser', 'module', 'main'],
+    modules: ['node_modules']
+  },
+```
+
+Add 2 new rules under `module`
+
+```
+
     module: {
       rules: [
         {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: {
-            loader: ‘babel-loader’
-          }
-        },
-        {
           test: /\.mjs$/,
           include: /node_modules/,
-          type: “javascript/auto”,
+          type: 'javascript/auto',
         },
         {
           test: /\.(html|svelte)$/,
           exclude: /node_modules/,
           use: {
-            loader: ‘svelte-loader’,
+            loader: 'svelte-loader',
             options: {
               hotReload: true
             }
           }
-        },
-        {
-          test: /\.css$/,
-          use: [MiniCssExtractPlugin.loader, ‘css-loader’]
         }
       ]
-    },
-    plugins: [
-      new MiniCssExtractPlugin({ filename: ‘../css/app.css’ }),
-      new CopyWebpackPlugin([{ from: ‘static/‘, to: ‘../‘ }])
-    ]
+    }
   });
 
 
@@ -106,7 +77,7 @@ then run `mix deps.get`
 
 5. Add this into your `/assets/js/app.js` file.
 
-`import ‘../../deps/sveltex/sveltex.js’;`
+`import "../../deps/sveltex/sveltex.js";`
 
 6. Go to `lib/your_project_name_web.ex` and add this line right before `end` in `view` function.
 
