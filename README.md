@@ -5,7 +5,7 @@ Creating component using Svelte is fun.
 
 Imagine we can just create svelte component, save it as `wizard.svelte` inside our `/assets/js/svelte` and anytime we need it inside out layout, just call it like so:
 
-`<%= sveltex "name_of_component", %{props_as_map: ""} %>`
+`<%= Sveltex.render "name_of_component", %{props_as_map: ""} %>`
 
 Sveltex does exactly this.
 
@@ -36,7 +36,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
    `cd assets && npm install svelte svelte-loader --save`
 
-3. Configure your webpack.
+3. Edit your Webpack config file `/assets/webpack.config.js`
 
    Add resolve:
 
@@ -54,7 +54,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
      },
    ```
 
-   Add 2 new rules under `module rules`
+   And add 2 new rules under `module rules`
 
    ```javascript
 
@@ -83,21 +83,16 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
     ```
 
-5. Add this into your `app.js` (`/assets/js/app.js` file).
+5. Lastly, add this into your `app.js` (`/assets/js/app.js` file).
 
    `import "../../deps/sveltex/assets/sveltex.js";`
 
-6. Go to `lib/[your_project_name]_web.ex` and add this line below `use Phoenix.HTML` in `view` function.
 
-   ```elixir
-   import Sveltex
-   ```
+## How to use ?
 
-## How to use
+Put your svelte component files (`.svelte`) under `/assets/js/svelte` directory.
 
-Put your `.svelte` files under `/assets/js/svelte`.
-
-for example: `test.svelte`
+Example: `test.svelte`
 
 ```html
 <script>
@@ -110,7 +105,7 @@ for example: `test.svelte`
 Then anywhere in your view template you can use
 
 ```elixir
-<%= sveltex "test", %{name: "virkillz"}>
+<%= Sveltex.render "test", %{name: "virkillz"}>
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)

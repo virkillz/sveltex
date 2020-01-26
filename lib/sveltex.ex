@@ -7,7 +7,7 @@ defmodule Sveltex do
   Main function to turn markup into html component which later on being parsed by the javascript side.
 
   """
-  def sveltex(name, props) do
+  def render(name, props) do
     Phoenix.HTML.Tag.tag(:div,
       data: [props: payload(props)],
       id: "sveltex-#{String.replace(name, " ", "-")}"
