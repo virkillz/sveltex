@@ -9,7 +9,7 @@ Imagine we can just create svelte component, save it as `wizard.svelte` inside o
 
 Sveltex does exactly this.
 
-## Installation
+## Install in 4 easy step.
 
 This library works well with Phoenix 1.4.12
 The difference between previous 1.4. version is replacing `uglify` with `terser`.
@@ -17,7 +17,7 @@ The difference between previous 1.4. version is replacing `uglify` with `terser`
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `sveltex` to your list of dependencies in `mix.exs`:
 
-1. Install `Sveltex`
+1. Install `Sveltex` as Elixir dependency.
 
    Add the dependency into your `mix.exs`
 
@@ -30,11 +30,16 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
 
    ```
 
-   then run `mix deps.get`
+   Then run: 
+   
+   ```
+   mix deps.get
+   ```
 
-2. Install Svelte and Svelte loader in your node dependency
-
-   `cd assets && npm install svelte svelte-loader --save`
+2. Install Svelte & Svelte Loader as Javascript dependency
+  ```
+   cd assets && npm install svelte svelte-loader --save
+  ```
 
 3. Edit your Webpack config file `/assets/webpack.config.js`
 
@@ -80,12 +85,13 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
      });
    ```
 
+4. Import to your `app.js` (`/assets/js/app.js` file).
 
-    ```
+  ```javascript
 
-5. Lastly, add this into your `app.js` (`/assets/js/app.js` file).
+   import "../../deps/sveltex/assets/sveltex.js";
 
-   `import "../../deps/sveltex/assets/sveltex.js";`
+  ```
 
 
 ## How to use ?
