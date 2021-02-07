@@ -24,7 +24,7 @@ by adding `sveltex` to your list of dependencies in `mix.exs`:
    ```elixir
        def deps do
          [
-           {:sveltex, git: "https://github.com/virkillz/sveltex.git", tag: "0.1.2"}
+           {:sveltex, git: "https://github.com/virkillz/sveltex.git", tag: "1.1.2"}
          ]
        end`
 
