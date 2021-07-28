@@ -3,16 +3,15 @@
 Building web using Phoenix is fun.
 Creating component using Svelte is fun.
 
-Imagine we can just create svelte component, save it as `wizard.svelte` inside our `/assets/js/svelte` and anytime we need it inside out layout, just call it like so:
+Imagine we can just create svelte component, save it as `component_name.svelte` inside our `/assets/js/svelte` and anytime we need it inside our layout, we can just call it like so:
 
-`<%= Sveltex.render "name_of_component", %{props_as_map: ""} %>`
+`<%= Sveltex.render "component_name", %{props_as_map: ""} %>`
 
 Sveltex does exactly this.
 
 ## Install in 4 easy step.
 
-This library works well with Phoenix 1.4.12
-The difference between previous 1.4. version is replacing `uglify` with `terser`.
+This library works well with Phoenix 1.4.12 and above. (Last time tested with Phoenix 1.5.9)
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `sveltex` to your list of dependencies in `mix.exs`:
@@ -111,7 +110,7 @@ Example: `test.svelte`
 Then anywhere in your view template you can use
 
 ```elixir
-<%= Sveltex.render "test", %{name: "virkillz"}>
+<%= Sveltex.render "test", %{name: "virkillz"} %>
 ```
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
