@@ -3,7 +3,7 @@ defmodule SveltexTest do
   doctest Sveltex
 
   test "basic test" do
-    assert Sveltex.sveltex("test", %{}) ==
+    assert Sveltex.render("test", %{}) ==
              {:safe,
               [
                 60,
@@ -12,12 +12,17 @@ defmodule SveltexTest do
                   [32, "data-props", 61, 34, "{}", 34],
                   [32, "id", 61, 34, "sveltex-test", 34]
                 ],
+                62,
+                [],
+                60,
+                47,
+                "div",
                 62
               ]}
   end
 
   test "with props" do
-    assert Sveltex.sveltex("header", %{name: "virkill"}) ==
+    assert Sveltex.render("header", %{name: "virkill"}) ==
              {:safe,
               [
                 60,
@@ -40,6 +45,11 @@ defmodule SveltexTest do
                   ],
                   [32, "id", 61, 34, "sveltex-header", 34]
                 ],
+                62,
+                [],
+                60,
+                47,
+                "div",
                 62
               ]}
   end
